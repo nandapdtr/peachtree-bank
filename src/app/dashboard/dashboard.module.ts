@@ -5,18 +5,20 @@ import { TransferFormComponent } from './transfer-form/transfer-form.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
+import { TransactionComponent } from './transactions/transaction/transaction.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, TransferFormComponent, TransactionsComponent],
+  declarations: [DashboardComponent, TransferFormComponent, TransactionsComponent, TransactionComponent],
   exports: [DashboardComponent],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule
   ],
   entryComponents: [TransactionOverviewComponent]

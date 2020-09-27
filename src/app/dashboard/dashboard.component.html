@@ -4,7 +4,7 @@
             <app-transfer-form [userAccount]="userAccountDetails | async" [merchants]="merchants | async" (performTransaction)="performTransaction($event)"></app-transfer-form>
         </div>
         <div class="col-12 col-md-10 col-lg-7">
-            <app-transactions></app-transactions>
+            <app-transactions [transactions]="transactions | async"></app-transactions>
         </div>
     </div>
 </div>
