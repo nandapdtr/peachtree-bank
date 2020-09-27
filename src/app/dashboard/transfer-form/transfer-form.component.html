@@ -1,1 +1,34 @@
-<p>transfer-form works!</p>
+<div class="card border-0">
+    <div class="card-header d-flex text-white p-2">
+        <img src="./assets/icons/arrows.png">
+        <span class="mx-auto">Make a Transfer</span>
+    </div>
+    <div class="card-body">
+        <form [formGroup]=transferForm (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="from-account" class="text-uppercase font-weight-bold">From Account</label>
+                <input type="text" id="from-account" class="form-input" formControlName="fromAccount">
+            </div>
+            <div class="form-group">
+                <ng-template #rt let-r="result" let-t="term">
+                    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+                </ng-template>
+                <label for="to-account" class="text-uppercase font-weight-bold">To Account</label>
+                <input type="text" id="to-account" class="form-input" placeholder="Merchant name" formControlName="toAccount" [ngbTypeahead]="search"
+                    [resultTemplate]="rt" [inputFormatter]="formatter" [editable]='false'>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="text-uppercase font-weight-bold">Amount</label>
+                <div class="d-flex align-items-center">
+                    <span class="currency-code">€</span>
+                    <input type="number" id="amount" min="0" class="form-input" placeholder="0.00" formControlName="amount">
+                </div>
+            </div>
+            <div *ngIf="amount.dirty && amount.errors && amount.errors.overdraft" class="alert-danger">Can not overdraft
+                beyond 500</div>
+            <div class="btn-container d-flex justify-content-end mt-3">
+                <app-button type="submit" [disabled]="transferForm.invalid">Submit</app-button>
+            </div>
+        </form>
+    </div>
+</div>
