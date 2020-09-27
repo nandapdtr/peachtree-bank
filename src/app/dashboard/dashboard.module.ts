@@ -6,6 +6,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
 
 
 
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     NgbModule
-  ]
+  ],
+  entryComponents: [TransactionOverviewComponent]
 })
 export class DashboardModule { }

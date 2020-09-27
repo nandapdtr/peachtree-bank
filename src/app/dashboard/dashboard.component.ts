@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { TransactionsService, TransformedTransaction } from '../core/transactions.service';
 import { Merchant, MerchantsDataService } from '../core/merchants-data.service';
 import { Account, UserDataService } from '../core/user-data.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private transactionsService: TransactionsService,
     private merchantsDataService: MerchantsDataService,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +30,14 @@ export class DashboardComponent implements OnInit {
   }
 
   performTransaction(data: any): void {
-    console.log(data);
+    const modalRef = this.modalService.open(TransactionOverviewComponent, { centered: true });
+    modalRef.componentInstance.data = data;
+    modalRef.result.then(() => {
+      this.transactionsService.addTransaction(data);
+      this.userDataService.deductBalance(data.amount);
+    }).catch(() => {
+      console.log('dismiss');
+    });
   }
 
 }

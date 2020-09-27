@@ -1,0 +1,28 @@
+<div class="modal-header text-white">
+    <h4 class="modal-title">Confirmation</h4>
+</div>
+<div class="modal-body">
+    <div class="container-fluid p-0">
+        <div class="row border-bottom align-items-center justify-content-center">
+            <span class="col-3">From</span>
+            <span class="col-5">
+                <div>{{data.fromAccount.name}}</div>
+                <div>{{data.fromAccount.accountNumber}}</div>
+            </span>
+        </div>
+        <div class="row border-bottom align-items-center justify-content-center">
+            <span class="col-3">To</span>
+            <span class="col-5">
+                <div>{{data.toAccount.name}}</div>
+                <div>{{data.toAccount.accountNumber}}</div>
+            </span>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <span class="col-3">Amount</span>
+            <span class="col-5">{{data.amount}}</span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirm()">Transfer</button>
+</div>
