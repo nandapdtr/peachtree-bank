@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TransactionsService, TransformedTransaction } from '../core/transactions.service';
+import { TransactionsService, TransformedTransaction, TransactionData } from '../core/transactions.service';
 import { Merchant, MerchantsDataService } from '../core/merchants-data.service';
 import { Account, UserDataService } from '../core/user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     this.userAccountDetails = this.userDataService.getUserAccountDetails();
   }
 
-  performTransaction(data: any): void {
+  performTransaction(data: TransactionData): void {
     const modalRef = this.modalService.open(TransactionOverviewComponent, { centered: true });
     modalRef.componentInstance.data = data;
     modalRef.result.then(() => {

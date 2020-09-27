@@ -14,7 +14,7 @@ export class TransactionOverviewComponent {
     private activeModal: NgbActiveModal
   ) { }
 
-  confirm() {
+  confirm(): void {
     this.activeModal.close();
   }
 

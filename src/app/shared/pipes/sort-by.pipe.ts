@@ -10,7 +10,7 @@ const dateComparator = (v1: Date, v2: Date) => (v1.getTime() - v2.getTime());
 })
 export class SortByPipe implements PipeTransform {
 
-  transform(value: TransformedTransaction[], direction: string = '', column: string = '', columnType: string) {
+  transform(value: TransformedTransaction[], direction: string = '', column: string = '', columnType: string): TransformedTransaction[] {
     if (!column || !direction) {
       return value;
     } else {

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TransformedTransaction } from '../../core/transactions.service';
 
 type SortDirection = 'asc' | 'desc' | '';
-const rotate: { [key: string]: SortDirection } = { 'asc': 'desc', 'desc': 'asc', '': 'asc' };
+const rotate: { [key: string]: SortDirection } = { asc: 'desc', desc: 'asc', '': 'asc' };
 
 @Component({
   selector: 'app-transactions',
@@ -12,9 +12,9 @@ const rotate: { [key: string]: SortDirection } = { 'asc': 'desc', 'desc': 'asc',
 export class TransactionsComponent {
   @Input() transactions: TransformedTransaction[];
   filterText: string;
-  sortColumn: string = 'date';
+  sortColumn = 'date';
   sortDirection: SortDirection = 'desc';
-  type: string = 'date';
+  type = 'date';
 
   sort(column: string, type: string): void {
     if (!this.sortColumn || this.sortColumn === column) {

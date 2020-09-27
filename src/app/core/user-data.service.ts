@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import userAccountDetails from '../shared/data/user-account-details';
 
 export interface Account {
-  name: string;
-  accountNumber: string;
-  balance: number;
-  currencyCode: string;
+    name: string;
+    accountNumber: string;
+    balance: number;
+    currencyCode: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserDataService {
 
-  private accountDetails: BehaviorSubject<Account> = new BehaviorSubject({
-    name: 'Nanda',
-    accountNumber: '12234567890',
-    balance: 10000,
-    currencyCode: 'EUR'
-  });
+    private accountDetails = { ...userAccountDetails };
 
-  constructor() { }
+    private accountDetails$: BehaviorSubject<Account> = new BehaviorSubject(this.accountDetails);
 
-  getUserAccountDetails(): Observable<Account> {
-    return this.accountDetails.asObservable();
-  }
+    getUserAccountDetails(): Observable<Account> {
+        return this.accountDetails$.asObservable();
+    }
 
-  deductBalance(amount: string) {
-    const updatedUserData = { ...this.accountDetails.value };
-    updatedUserData.balance -= +amount;
-    this.accountDetails.next(updatedUserData);
-  }
+    deductBalance(amount: number): void {
+        const remainingBalance = this.accountDetails.balance - amount;
+        this.accountDetails = { ...this.accountDetails, ...{ balance: remainingBalance } };
+        this.accountDetails$.next(this.accountDetails);
+    }
 }

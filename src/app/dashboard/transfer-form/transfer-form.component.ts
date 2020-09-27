@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { Account } from '../../core/user-data.service';
@@ -32,9 +32,8 @@ export class TransferFormComponent implements OnChanges {
     private currencyCodePipe: CurrencyCodePipe
   ) { }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.userAccount) {
-      this.userAccount = changes.userAccount.currentValue;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.userAccount && changes.userAccount.currentValue) {
       this.initializeForm();
       this.checkForBalance();
     }
@@ -44,7 +43,7 @@ export class TransferFormComponent implements OnChanges {
     this.transferForm.get('amount').valueChanges.subscribe(amount => {
       const balance = this.userAccount.balance;
       if ((balance - +amount) < -500) {
-        this.transferForm.get('amount').setErrors({ 'overdraft': true });
+        this.transferForm.get('amount').setErrors({ overdraft: true });
       } else if (+amount === 0) {
         this.transferForm.get('amount').setErrors({ 'zero-amount': true });
       } else {
@@ -53,16 +52,16 @@ export class TransferFormComponent implements OnChanges {
     });
   }
 
-  get amount() {
+  get amount(): AbstractControl {
     return this.transferForm.get('amount');
   }
 
   onSubmit(): void {
-    const transactionDetails = { ...this.transferForm.value, ...{ fromAccount: this.userAccount } };
-    this.performTransaction.emit(transactionDetails);
+    const transactionData = { ...this.transferForm.value, ...{ fromAccount: this.userAccount } };
+    this.performTransaction.emit(transactionData);
   }
 
-  private initializeForm() {
+  private initializeForm(): void {
     this.transferForm = this.fb.group({
       fromAccount: [{
         value: this.fromAccountDisplayValue(),
@@ -73,7 +72,7 @@ export class TransferFormComponent implements OnChanges {
     });
   }
 
-  private fromAccountDisplayValue() {
+  private fromAccountDisplayValue(): string {
     const userAccount = this.userAccount;
     const name = userAccount.name;
     const balance = userAccount.balance;
