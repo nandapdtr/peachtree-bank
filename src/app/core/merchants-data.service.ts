@@ -17,14 +17,18 @@ export class MerchantsDataService {
     private transactionsService: TransactionsService
   ) { }
 
+  /**
+   * @summary Fetches transactions and maps to an array of merchants
+   * @returns an observable of merchants
+   */
   getMerchants(): Observable<Merchant[]> {
     return this.transactionsService.getTransactionsFromAPI().pipe(
       map(transactions => {
-        return transactions.map(txn => txn.merchant).reduce((accu, curr) => {
-          if (!accu.find(m => m.name === curr.name)) {
-            accu.push(curr);
+        return transactions.map(transaction => transaction.merchant).reduce((merchants, currentMerchant) => {
+          if (!merchants.find(merchant => merchant.name === currentMerchant.name)) {
+            merchants.push(currentMerchant);
           }
-          return accu;
+          return merchants;
         }, []);
       })
     );

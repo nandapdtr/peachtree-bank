@@ -1,7 +1,10 @@
-<div class="modal-header text-white">
-    <h4 class="modal-title">Confirmation</h4>
+<div class="modal-header text-white justify-content-center">
+    <span class="modal-title">Confirmation</span>
+    <button type="button" class="close" (click)="dismiss()">
+        <span>&times;</span>
+    </button>
 </div>
-<div class="modal-body">
+<div class="modal-body pb-0">
     <div class="container-fluid p-0">
         <div class="row border-bottom align-items-center justify-content-center">
             <span class="col-3">From</span>
@@ -17,12 +20,12 @@
                 <div>{{data.toAccount.accountNumber}}</div>
             </span>
         </div>
-        <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center pt-2 pb-2">
             <span class="col-3">Amount</span>
-            <span class="col-5">{{data.amount}}</span>
+            <span class="col-5">{{data.fromAccount.currencyCode | currencyCode}}{{data.amount}}</span>
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="confirm()">Transfer</button>
+    <app-button (clicked)="confirm()">Transfer</app-button>
 </div>

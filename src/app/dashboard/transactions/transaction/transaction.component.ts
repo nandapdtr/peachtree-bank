@@ -9,6 +9,11 @@ import { TransformedTransaction } from '../../../core/transactions.service';
 export class TransactionComponent {
   @Input() transaction: TransformedTransaction;
 
+  /**
+   * @summary Forms a relative path to display an icon
+   * @param iconName - name of the icon that being displayed
+   * @returns a relative path of the icon
+   */
   getIconPath(iconName: string): string {
     return `../../../assets/icons/${iconName}.png`;
   }

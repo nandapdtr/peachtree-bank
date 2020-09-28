@@ -1,8 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { TransformedTransaction } from '../../core/transactions.service';
 
-type SortDirection = 'asc' | 'desc' | '';
-const rotate: { [key: string]: SortDirection } = { asc: 'desc', desc: 'asc', '': 'asc' };
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+  NONE = ''
+}
+
+export enum SortColumn {
+  Date = 'date',
+  Merchant = 'merchant',
+  Amount = 'amount'
+}
+
+export enum ColumnType {
+  Date = 'date',
+  String = 'string',
+  Number = 'number'
+}
+
+const rotate: { [key: string]: SortDirection } = { asc: SortDirection.DESC, desc: SortDirection.ASC, '': SortDirection.ASC };
 
 @Component({
   selector: 'app-transactions',
@@ -11,16 +28,24 @@ const rotate: { [key: string]: SortDirection } = { asc: 'desc', desc: 'asc', '':
 })
 export class TransactionsComponent {
   @Input() transactions: TransformedTransaction[];
-  filterText: string;
-  sortColumn = 'date';
-  sortDirection: SortDirection = 'desc';
-  type = 'date';
+  searchText: string;
+  columnToBeSorted = SortColumn.Date;
+  sortDirection: SortDirection = SortDirection.DESC;
+  type = ColumnType.Date;
+  ColumnType = ColumnType;
+  SortColumn = SortColumn;
+  skipFilterOn = ['creditDebitIndicator', 'categoryCode'];
 
-  sort(column: string, type: string): void {
-    if (!this.sortColumn || this.sortColumn === column) {
+  /**
+   * @summary Updates the column, data type of the data and sort direction
+   * @param column - that being sorted
+   * @param type - data type of the data that being sorted
+   */
+  sort(column: SortColumn, type: ColumnType): void {
+    if (!this.columnToBeSorted || this.columnToBeSorted === column) {
       this.sortDirection = rotate[this.sortDirection];
     }
     this.type = type;
-    this.sortColumn = column;
+    this.columnToBeSorted = column;
   }
 }

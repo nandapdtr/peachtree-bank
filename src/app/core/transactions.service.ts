@@ -54,14 +54,16 @@ export class TransactionsService {
     private mockTransactions: Transaction[] = [...mockTransactionsData];
     private transactions$: BehaviorSubject<Transaction[]> = new BehaviorSubject(this.mockTransactions);
     /**
-     * Returns an observable of transactions
+     * @summary Fetches transactions from API
+     * @returns an observable of transactions
      */
     getTransactionsFromAPI(): Observable<Transaction[]> {
         return this.transactions$.asObservable();
     }
 
     /**
-     * Returns an observable of transformed transactions
+     * @summary Fetches transactions from API and maps to TransformedTransaction
+     * @returns an observable of transformed transactions
      */
     getTransactions(): Observable<TransformedTransaction[]> {
         return this.getTransactionsFromAPI().pipe(
@@ -70,7 +72,7 @@ export class TransactionsService {
     }
 
     /**
-     * Adds a new transaction to the existing general ledger
+     * @summary Adds a new transaction to the existing general ledger
      * @param transactionData - transactionData object that being added
      */
     addTransaction(transactionData: TransactionData): void {
@@ -80,8 +82,9 @@ export class TransactionsService {
     }
 
     /**
-     * Returns an array of transactions of type TransformedTransaction
+     * @summary Maps the transactions to an array of TransformedTransaction
      * @param transactions - transactions that being mapped to an array of type TransformedTransaction
+     * @returns an array of TransformedTransaction
      */
     private mapTransactions(transactions: Transaction[]): TransformedTransaction[] {
         return transactions.map(txn => ({
@@ -97,16 +100,18 @@ export class TransactionsService {
     }
 
     /**
-     * Returns a kebab-case string
-     * @param merchant - merchant name that being modified to kebab-case
+     * @summary Formats a string to kebab-case
+     * @param merchant - merchant name that being formatted to kebab-case
+     * @returns kebab-case string
      */
     private getIconName(merchant: string): string {
         return merchant.replace(/\s/g, '-').toLowerCase();
     }
 
     /**
-     * Returns a transaction object than being added to transactions
+     * @summary Maps the transaction data to transaction
      * @param transactionData - transactionData object that being mapped to transaction
+     * @returns a transaction object
      */
     private formTransactionRequest(transactionData: TransactionData): Transaction {
         return {
@@ -130,7 +135,8 @@ export class TransactionsService {
     }
 
     /**
-     * Returns a categoryCode for the new transaction
+     * @summary Picks a random categoryCode from an array of categoryCodes
+     * @returns a categoryCode for the new transaction
      */
     private getCategoryCode(): string {
         const randomNumber = Math.round(Math.random() * categoryCodes.length);

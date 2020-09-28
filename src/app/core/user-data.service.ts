@@ -16,15 +16,23 @@ export class UserDataService {
 
     private accountDetails = { ...userAccountDetails };
 
-    private accountDetails$: BehaviorSubject<Account> = new BehaviorSubject(this.accountDetails);
+    private accountDetailsSubject$: BehaviorSubject<Account> = new BehaviorSubject(this.accountDetails);
 
+    /**
+     * @summary Fetches user account details
+     * @returns an observable of user account details
+     */
     getUserAccountDetails(): Observable<Account> {
-        return this.accountDetails$.asObservable();
+        return this.accountDetailsSubject$.asObservable();
     }
 
+    /**
+     * @summary Deducts the balance in the user account
+     * @param amount - that being deducted from the user account
+     */
     deductBalance(amount: number): void {
         const remainingBalance = this.accountDetails.balance - amount;
         this.accountDetails = { ...this.accountDetails, ...{ balance: remainingBalance } };
-        this.accountDetails$.next(this.accountDetails);
+        this.accountDetailsSubject$.next(this.accountDetails);
     }
 }

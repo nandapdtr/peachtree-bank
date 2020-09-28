@@ -11,6 +11,9 @@ export class ButtonComponent {
   @Input() category = 'btn-primary';
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 
+  /**
+   * @summary Emits click event on button click
+   */
   onBtnClick(): void {
     this.clicked.emit();
   }

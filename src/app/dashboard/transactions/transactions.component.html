@@ -1,6 +1,6 @@
 <div class="card border-0">
     <div class="card-header d-flex text-white p-3">
-        <img src="../../../assets/icons/briefcase.png">
+        <img class="position-absolute" src="../../../assets/icons/briefcase.png">
         <span class="mx-auto">Recent Transactions</span>
     </div>
     <div class="card-body">
@@ -9,27 +9,27 @@
                 <div class="col-12 col-md-6">
                     <form name="filterForm" #filterForm>
                         <div class="form-group d-flex mb-md-0">
-                            <input type="text" class="form-input" placeholder="Search by typing..." [(ngModel)]="filterText" name="filterText">
-                            <span *ngIf="filterText" class="clear-filter" (click)="filterForm.reset()">X</span>
+                            <input type="text" autocomplete="off" class="form-input" placeholder="Search by typing..." [(ngModel)]="searchText" name="searchText">
+                            <span *ngIf="searchText" class="clear-filter" (click)="filterForm.reset()">X</span>
                         </div>
                     </form>
                 </div>
                 <div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                     <span class="font-weight-bold">Sort by</span>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort('date', 'date')">
-                            Date <span [ngClass]="sortColumn == 'date' ? sortDirection : ''"></span>
+                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort(SortColumn.Date, ColumnType.Date)">
+                            Date <span [ngClass]="columnToBeSorted === SortColumn.Date ? sortDirection : ''"></span>
                         </button>
-                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort('merchant', 'string')">
-                            Benificiary <span [ngClass]="sortColumn == 'merchant' ? sortDirection : ''"></span>
+                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort(SortColumn.Merchant, ColumnType.String)">
+                            Benificiary <span [ngClass]="columnToBeSorted === SortColumn.Merchant ? sortDirection : ''"></span>
                         </button>
-                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort('amount', 'number')">
-                            Amount <span [ngClass]="sortColumn == 'amount' ? sortDirection : ''"></span>
+                        <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort(SortColumn.Amount, ColumnType.Number)">
+                            Amount <span [ngClass]="columnToBeSorted === SortColumn.Amount ? sortDirection : ''"></span>
                         </button>
                     </div>
                 </div>
             </div>
-            <app-transaction class="row border-left-0 transaction" *ngFor="let transaction of (transactions | filter:filterText | sortBy:sortDirection:sortColumn:type)"
+            <app-transaction class="row border-left-0 transaction" *ngFor="let transaction of (transactions | filter:searchText:skipFilterOn | sortBy:sortDirection:columnToBeSorted:type)"
                 [transaction]=transaction></app-transaction>
         </div>
     </div>

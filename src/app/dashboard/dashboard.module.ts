@@ -12,7 +12,7 @@ import { TransactionComponent } from './transactions/transaction/transaction.com
 
 
 @NgModule({
-  declarations: [DashboardComponent, TransferFormComponent, TransactionsComponent, TransactionComponent],
+  declarations: [DashboardComponent, TransferFormComponent, TransactionsComponent, TransactionComponent, TransactionOverviewComponent],
   exports: [DashboardComponent],
   imports: [
     CommonModule,
@@ -20,7 +20,6 @@ import { TransactionComponent } from './transactions/transaction/transaction.com
     ReactiveFormsModule,
     FormsModule,
     NgbModule
-  ],
-  entryComponents: [TransactionOverviewComponent]
+  ]
 })
 export class DashboardModule { }

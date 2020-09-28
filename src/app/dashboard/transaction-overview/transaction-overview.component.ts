@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TransactionData } from '../../core/transactions.service';
 
 @Component({
   selector: 'app-transaction-overview',
@@ -8,14 +9,24 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TransactionOverviewComponent {
 
-  @Input() data: any;
+  @Input() data: TransactionData;
 
   constructor(
     private activeModal: NgbActiveModal
   ) { }
 
+  /**
+   * @summary Closes the modal window
+   */
   confirm(): void {
     this.activeModal.close();
+  }
+
+  /**
+   * @summary Dismisses the modal windows
+   */
+  dismiss(): void {
+    this.activeModal.dismiss();
   }
 
 }
