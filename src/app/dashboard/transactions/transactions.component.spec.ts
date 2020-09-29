@@ -6,7 +6,7 @@ import mockTransactionsData from '../../shared/data/transactions-test-data';
 import { DebugElement, Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { TransformedTransaction } from '../../core/transactions.service';
+import { TransformedTransaction } from '../../shared/model/transformed-transaction';
 
 @Component({
   selector: 'app-transaction',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TransformedTransaction } from '../../../core/transactions.service';
+import { TransformedTransaction } from '../../../shared/model/transformed-transaction';
 
 @Component({
   selector: 'app-transaction',

@@ -1,8 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TransactionsService, Transaction, TransformedTransaction, TransactionData } from './transactions.service';
+import { TransactionsService } from './transactions.service';
 import mockTransactionsData from '../shared/data/transactions';
 import { take } from 'rxjs/operators';
+import { Transaction } from '../shared/model/transaction';
+import { TransformedTransaction } from '../shared/model/transformed-transaction';
+import { TransactionData } from '../shared/model/transaction-data';
 
 describe('TransactionsService', () => {
   let transactionsService: TransactionsService;

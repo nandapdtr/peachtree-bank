@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 
 import { DashboardComponent } from './dashboard.component';
 import { Component, Input, Output, EventEmitter, DebugElement, enableProdMode } from '@angular/core';
-import { Account, UserDataService } from '../core/user-data.service';
-import { Merchant, MerchantsDataService } from '../core/merchants-data.service';
-import { TransactionData, TransformedTransaction, TransactionsService, Transaction } from '../core/transactions.service';
+import { UserDataService } from '../core/user-data.service';
+import { MerchantsDataService } from '../core/merchants-data.service';
+import { TransactionsService } from '../core/transactions.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { cold, getTestScheduler } from 'jasmine-marbles';
 import transactions from '../shared/data/transactions';
@@ -12,6 +12,9 @@ import { By } from '@angular/platform-browser';
 import userAccountDetails from '../shared/data/user-account-details';
 import merchants from '../shared/data/merchants';
 import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
+import { Merchant } from '../shared/model/merchant';
+import { TransactionData } from '../shared/model/transaction-data';
+import { TransformedTransaction } from '../shared/model/transformed-transaction';
 
 @Component({
   selector: 'app-transfer-form',

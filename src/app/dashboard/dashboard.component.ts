@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TransactionsService, TransformedTransaction, TransactionData } from '../core/transactions.service';
-import { Merchant, MerchantsDataService } from '../core/merchants-data.service';
-import { Account, UserDataService } from '../core/user-data.service';
+import { TransactionsService } from '../core/transactions.service';
+import { MerchantsDataService } from '../core/merchants-data.service';
+import { UserDataService } from '../core/user-data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
+import { TransformedTransaction } from '../shared/model/transformed-transaction';
+import { Merchant } from '../shared/model/merchant';
+import { Account } from '../shared/model/account';
+import { TransactionData } from '../shared/model/transaction-data';
 
 @Component({
   selector: 'app-dashboard',

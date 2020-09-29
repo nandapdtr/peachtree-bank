@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TransformedTransaction } from '../../core/transactions.service';
+import { TransformedTransaction } from '../model/transformed-transaction';
 
 @Pipe({
   name: 'filter'

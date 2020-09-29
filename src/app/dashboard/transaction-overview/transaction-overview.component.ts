@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TransactionData } from '../../core/transactions.service';
+import { TransactionData } from '../../shared/model/transaction-data';
 
 @Component({
   selector: 'app-transaction-overview',

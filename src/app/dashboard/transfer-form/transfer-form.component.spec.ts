@@ -6,7 +6,7 @@ import { SimpleChange, DebugElement } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { By } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TransactionData } from '../../core/transactions.service';
+import { TransactionData } from '../../shared/model/transaction-data';
 
 describe('TransferFormComponent', () => {
   let component: TransferFormComponent;

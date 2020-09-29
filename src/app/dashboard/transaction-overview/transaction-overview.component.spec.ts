@@ -3,9 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TransactionOverviewComponent } from './transaction-overview.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
-import { TransactionData } from '../../core/transactions.service';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { TransactionData } from '../../shared/model/transaction-data';
 
 describe('TransactionOverviewComponent', () => {
   let component: TransactionOverviewComponent;

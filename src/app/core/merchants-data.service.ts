@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { TransactionsService } from './transactions.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-export interface Merchant {
-  name: string;
-  accountNumber: string;
-}
+import { Merchant } from '../shared/model/merchant';
 
 @Injectable({
   providedIn: 'root'

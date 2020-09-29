@@ -1,4 +1,4 @@
-import { TransformedTransaction } from '../../core/transactions.service';
+import { TransformedTransaction } from '../model/transformed-transaction';
 
 export default [{
     merchant: 'Backbase',

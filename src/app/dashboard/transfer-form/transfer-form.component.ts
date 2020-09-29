@@ -2,10 +2,10 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
-import { Account } from '../../core/user-data.service';
 import { CurrencyCodePipe } from '../../shared/pipes/currency-code.pipe';
-import { Merchant } from '../../core/merchants-data.service';
-import { TransactionData } from '../../core/transactions.service';
+import { Merchant } from '../../shared/model/merchant';
+import { TransactionData } from '../../shared/model/transaction-data';
+import { Account } from '../../shared/model/account';
 
 interface InputError {
   [key: string]: boolean;

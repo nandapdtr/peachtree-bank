@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionComponent } from './transaction.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { TransformedTransaction } from '../../../core/transactions.service';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { TransformedTransaction } from '../../../shared/model/transformed-transaction';
 
 describe('TransactionComponent', () => {
   let component: TransactionComponent;

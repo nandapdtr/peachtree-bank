@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import userAccountDetails from '../shared/data/user-account-details';
+import { Account } from '../shared/model/account';
 
-export interface Account {
-    name: string;
-    accountNumber: string;
-    balance: number;
-    currencyCode: string;
-}
 
 @Injectable({
     providedIn: 'root'

@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserDataService, Account } from './user-data.service';
+import { UserDataService } from './user-data.service';
 import userAccountDetails from '../shared/data/user-account-details';
-import { pipe } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { Account } from '../shared/model/account';
 
 
 describe('UserDataService', () => {

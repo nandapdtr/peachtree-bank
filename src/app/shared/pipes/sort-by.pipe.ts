@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TransformedTransaction } from '../../core/transactions.service';
+import { TransformedTransaction } from '../model/transformed-transaction';
 
 const stringComparator = (v1: string, v2: string) => (v1.localeCompare(v2));
 const numberComparator = (v1: number, v2: number) => (v1 - v2);

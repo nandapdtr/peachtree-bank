@@ -1,48 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Merchant } from './merchants-data.service';
 import mockTransactionsData from '../shared/data/transactions';
-import { Account } from './user-data.service';
-
-export interface Transaction {
-    categoryCode: string;
-    dates: TransactionDate;
-    transaction: TransactionDetails;
-    merchant: Merchant;
-}
-
-interface TransactionDate {
-    valueDate: Date | number | string;
-}
-
-interface TransactionDetails {
-    amountCurrency: AmountCurrency;
-    type: string;
-    creditDebitIndicator?: string;
-}
-
-interface AmountCurrency {
-    amount: number | string;
-    currencyCode: string;
-}
-
-export interface TransformedTransaction {
-    date: Date;
-    merchant: string;
-    type: string;
-    amount: string | number;
-    currencyCode: string;
-    creditDebitIndicator: string;
-    categoryCode: string;
-    iconName: string;
-}
-
-export interface TransactionData {
-    fromAccount: Account;
-    toAccount: Account;
-    amount: number;
-}
+import { Transaction } from '../shared/model/transaction';
+import { TransformedTransaction } from '../shared/model/transformed-transaction';
+import { TransactionData } from '../shared/model/transaction-data';
 
 const categoryCodes = mockTransactionsData.map(tansaction => tansaction.categoryCode);
 
