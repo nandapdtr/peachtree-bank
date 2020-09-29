@@ -26,4 +26,9 @@ body {
         -webkit-appearance: none;
         margin: 0;
     }
+
+    /* Removes clear icon 'X' for input fields in IE*/
+    input::-ms-clear {
+        display: none;
+    }
 }
