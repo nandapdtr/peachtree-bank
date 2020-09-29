@@ -1,9 +1,11 @@
+$border:2px solid #cccccc;
+
 .card-header {
     background-color: #0e8396;
 }
 
 .form-group {
-    border-bottom: 2px solid #cccccc;
+    border-bottom: $border;
 
     .form-input {
         display: block;
@@ -41,10 +43,10 @@
 }
 
 .transaction {
-    border-bottom: 2px solid #cccccc;
-    border-right: 2px solid #cccccc;
+    border-bottom: $border;
+    border-right: $border;
 
     &:first-of-type {
-        border-top: 2px solid #cccccc;
+        border-top: $border;
     }
 }

@@ -64,6 +64,6 @@ describe('TransactionComponent', () => {
   it('should display amount with creditDebitIndicator and currencyCode', () => {
     const amountElement = debugElement.query(By.css('.transaction-amount'));
 
-    expect(amountElement.nativeElement.textContent).toEqual('+€1000');
+    expect(amountElement.nativeElement.textContent).toEqual('+ € 1000');
   });
 });

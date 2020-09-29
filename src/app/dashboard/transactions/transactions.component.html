@@ -6,15 +6,15 @@
     <div class="card-body">
         <div class="container-fluid">
             <div class="row mb-4 align-items-end">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-lg-6 p-0 pl-lg-3 pr-lg-3">
                     <form name="filterForm" #filterForm>
-                        <div class="form-group d-flex mb-md-0">
+                        <div class="form-group d-flex mb-lg-0">
                             <input type="text" autocomplete="off" class="form-input" placeholder="Search by typing..." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
-                            <span *ngIf="searchText" class="clear-filter" (click)="filterForm.reset()">&#10005;</span>
+                            <span *ngIf="searchText" class="clear-filter" (click)="filterForm.reset();searchText=''">&#10005;</span>
                         </div>
                     </form>
                 </div>
-                <div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                <div class="col-12 col-lg-6 d-flex flex-column flex-md-row justify-content-between align-items-lg-center p-0">
                     <span class="font-weight-bold">Sort by</span>
                     <div class="btn-group">
                         <button type="button" class="btn btn-outline-secondary rounded-0 shadow-none text-black-50" (click)="sort(SortColumn.Date, ColumnType.Date)">
