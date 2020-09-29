@@ -6,23 +6,23 @@
 </div>
 <div class="modal-body pb-0">
     <div class="container-fluid p-0">
-        <div class="row border-bottom align-items-center justify-content-center">
-            <span class="col-3">From</span>
+        <div class="row from-account border-bottom align-items-center justify-content-center">
+            <span class="col-3 from-account-title">From</span>
             <span class="col-5">
-                <div>{{data.fromAccount.name}}</div>
-                <div>{{data.fromAccount.accountNumber}}</div>
+                <div class="from-account-name">{{data.fromAccount.name}}</div>
+                <div class="from-account-number">{{data.fromAccount.accountNumber}}</div>
             </span>
         </div>
-        <div class="row border-bottom align-items-center justify-content-center">
-            <span class="col-3">To</span>
+        <div class="row to-account border-bottom align-items-center justify-content-center">
+            <span class="col-3 to-account-title">To</span>
             <span class="col-5">
-                <div>{{data.toAccount.name}}</div>
-                <div>{{data.toAccount.accountNumber}}</div>
+                <div class="to-account-name">{{data.toAccount.name}}</div>
+                <div class="to-account-number">{{data.toAccount.accountNumber}}</div>
             </span>
         </div>
         <div class="row align-items-center justify-content-center pt-2 pb-2">
-            <span class="col-3">Amount</span>
-            <span class="col-5">{{data.fromAccount.currencyCode | currencyCode}}{{data.amount}}</span>
+            <span class="col-3 amount-title">Amount</span>
+            <span class="col-5 amount">{{data.fromAccount.currencyCode | currencyCode}} {{data.amount}}</span>
         </div>
     </div>
 </div>

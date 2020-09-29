@@ -9,8 +9,8 @@
                 <div class="col-12 col-md-6">
                     <form name="filterForm" #filterForm>
                         <div class="form-group d-flex mb-md-0">
-                            <input type="text" autocomplete="off" class="form-input" placeholder="Search by typing..." [(ngModel)]="searchText" name="searchText">
-                            <span *ngIf="searchText" class="clear-filter" (click)="filterForm.reset()">X</span>
+                            <input type="text" autocomplete="off" class="form-input" placeholder="Search by typing..." [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="searchText" class="clear-filter" (click)="filterForm.reset()">&#10005;</span>
                         </div>
                     </form>
                 </div>

@@ -1,31 +1,63 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { DebugElement, Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-header',
+  template: ''
+})
+class HeaderMockComponent { }
+
+@Component({
+  selector: 'app-dashboard',
+  template: ''
+})
+class DashboardMockComponent { }
 
 describe('AppComponent', () => {
+  let app: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let debugElement: DebugElement;
+
+  function getDebugElement(selector: string): DebugElement {
+    return debugElement.query(By.css(selector));
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderMockComponent,
+        DashboardMockComponent
       ],
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    debugElement = fixture.debugElement;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'peachtree-bank'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('peachtree-bank');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('peachtree-bank app is running!');
+  it('should display header component', () => {
+    const headerDe = getDebugElement('app-header');
+
+    expect(headerDe).toBeTruthy();
+  });
+
+  it('should display dashboard component', () => {
+    const dashboardDe = getDebugElement('app-dashboard');
+
+    expect(dashboardDe).toBeTruthy();
   });
 });

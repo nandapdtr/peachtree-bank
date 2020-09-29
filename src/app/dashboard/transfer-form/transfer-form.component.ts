@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
 import { Account } from '../../core/user-data.service';
 import { CurrencyCodePipe } from '../../shared/pipes/currency-code.pipe';
 import { Merchant } from '../../core/merchants-data.service';
+import { TransactionData } from '../../core/transactions.service';
 
 interface InputError {
   [key: string]: boolean;
@@ -19,7 +20,7 @@ interface InputError {
 export class TransferFormComponent implements OnChanges {
   @Input() merchants: Merchant[];
   @Input() userAccount: Account;
-  @Output() performTransaction = new EventEmitter();
+  @Output() performTransaction = new EventEmitter<TransactionData>();
   transferForm: FormGroup;
 
   /**
@@ -91,16 +92,16 @@ export class TransferFormComponent implements OnChanges {
    * @summary Validates the amount field for overdraft and zero amount
    * @returns an error object if the overdraft is more than 500 and/or amount entered is zero
    */
-  private validateAmount() {
+  private validateAmount(): ((contol: AbstractControl) => InputError) {
     return (contol: AbstractControl): InputError => {
       const balance = this.userAccount.balance;
       if ((balance - contol.value) < -500) {
         return { overdraft: true };
-      } else if (contol.value === 0) {
-        return { zeroAmount: true };
+      } else if (!/^\d+(?:\.\d{0,2})?$/g.test(contol.value) || contol.value === 0) {
+        return { invalidAmount: true };
       }
       return null;
-    }
+    };
   }
 
   /**

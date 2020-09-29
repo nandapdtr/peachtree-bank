@@ -1,6 +1,6 @@
 <div class="card border-0">
     <div class="card-header d-flex text-white p-2">
-        <img class="position-absolute" src="./assets/icons/arrows.png">
+        <img class="position-absolute" src="../../../assets/icons/arrows.png">
         <span class="mx-auto">Make a Transfer</span>
     </div>
     <div class="card-body">
@@ -14,18 +14,18 @@
                     <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
                 </ng-template>
                 <label for="to-account" class="text-uppercase font-weight-bold">To Account</label>
-                <input type="text" id="to-account" autocomplete="off" class="form-input" placeholder="Merchant name" formControlName="toAccount" [ngbTypeahead]="search"
-                    [resultTemplate]="rt" [inputFormatter]="formatter" [editable]='false'>
+                <input type="text" id="to-account" autocomplete="off" class="form-input" placeholder="Merchant name" formControlName="toAccount"
+                    [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" [editable]='false'>
             </div>
             <div class="form-group mb-0">
                 <label for="amount" class="text-uppercase font-weight-bold">Amount</label>
                 <div class="d-flex align-items-center">
-                    <span class="currency-code">€</span>
+                    <span class="currency-code">{{userAccount.currencyCode | currencyCode}}</span>
                     <input type="number" id="amount" autocomplete="off" min="0" class="form-input" placeholder="0.00" formControlName="amount">
                 </div>
             </div>
-            <div *ngIf="amount.dirty && amount.errors && amount.errors.overdraft" class="alert-danger overdraft-error">Can not overdraft
-                beyond 500</div>
+            <div *ngIf="amount.errors && amount.errors.overdraft" class="alert-danger overdraft-error">Can
+                not overdraft beyond 500</div>
             <div class="btn-container d-flex justify-content-end mt-5">
                 <app-button type="submit" [disabled]="transferForm.invalid">Submit</app-button>
             </div>

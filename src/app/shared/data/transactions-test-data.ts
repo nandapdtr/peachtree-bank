@@ -1,6 +1,6 @@
 import { TransformedTransaction } from '../../core/transactions.service';
 
-export default <TransformedTransaction[]>[{
+export default [{
     merchant: 'Backbase',
     type: 'Salaries',
     date: new Date(),
@@ -18,4 +18,4 @@ export default <TransformedTransaction[]>[{
     creditDebitIndicator: 'CRDT',
     iconName: 'icon',
     categoryCode: '#eeeeee'
-}];
+}] as TransformedTransaction[];
