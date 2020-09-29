@@ -8,14 +8,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TransactionOverviewComponent } from './transaction-overview/transaction-overview.component';
 import { TransactionComponent } from './transactions/transaction/transaction.component';
-
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 @NgModule({
   declarations: [DashboardComponent, TransferFormComponent, TransactionsComponent, TransactionComponent, TransactionOverviewComponent],
-  exports: [DashboardComponent],
+  // exports: [DashboardComponent],
   imports: [
     CommonModule,
+    DashboardRoutingModule,
     SharedModule,
     ReactiveFormsModule,
     FormsModule,

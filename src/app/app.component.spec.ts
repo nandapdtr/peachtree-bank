@@ -9,12 +9,6 @@ import { By } from '@angular/platform-browser';
 })
 class HeaderMockComponent { }
 
-@Component({
-  selector: 'app-dashboard',
-  template: ''
-})
-class DashboardMockComponent { }
-
 describe('AppComponent', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
@@ -28,8 +22,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HeaderMockComponent,
-        DashboardMockComponent
+        HeaderMockComponent
       ],
     }).compileComponents();
   }));
@@ -53,11 +46,5 @@ describe('AppComponent', () => {
     const headerDe = getDebugElement('app-header');
 
     expect(headerDe).toBeTruthy();
-  });
-
-  it('should display dashboard component', () => {
-    const dashboardDe = getDebugElement('app-dashboard');
-
-    expect(dashboardDe).toBeTruthy();
   });
 });
