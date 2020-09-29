@@ -45,7 +45,8 @@
           "error",
           { "type": "element", "prefix": "app", "style": "kebab-case" }
         ],
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "max-len": ["error", { "code": 180 }]
       }
     },
 
@@ -69,7 +70,7 @@
          * There is an example below from ESLint core (note, this specific example is not
          * necessarily recommended for all projects):
          */
-        "max-len": ["error", { "code": 180 }]
+        "max-len": ["error", { "code": 200 }]
       }
     },
 

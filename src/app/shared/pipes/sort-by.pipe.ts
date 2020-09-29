@@ -18,7 +18,7 @@ export class SortByPipe implements PipeTransform {
    * @param [columnType=''] - the data type of the column that being sorted
    * @returns an array of sorted transactions
    */
-  transform(transactions: TransformedTransaction[], direction: string = '', column: string = '', columnType: string = ''): TransformedTransaction[] {
+  transform(transactions: TransformedTransaction[], direction = '', column = '', columnType = ''): TransformedTransaction[] {
     if (!column || !direction || !columnType) {
       return transactions;
     } else {
